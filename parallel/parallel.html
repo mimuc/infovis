@@ -1,0 +1,119 @@
+<!--
+Copyright (c) 2021 LMU Munich Geometry Processing Authors. All rights reserved.
+Created by Changkun Ou <https://changkun.de>.
+
+Use of this source code is governed by a GNU GPLv3 license that can be found
+in the LICENSE file.
+-->
+
+<!DOCTYPE html>
+<html style="height: 100%">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body style="height: 100%; margin: 0">
+        <div id="container" style="height: 100%"></div>
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
+        <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+
+var option;
+
+
+
+option = {
+  backgroundColor: '#333',
+  parallelAxis: [
+    { dim: 0, name: 'Price ($)', max: 450, min: 200 },
+    { dim: 1, name: 'Earnings (mil$)', max: 5, min: 1 },
+    { dim: 2, name: 'Computing Power (TFLOPS)', max: 10, min: 3 },
+    { dim: 3, name: 'Weight (g)', max: 500, min: 200},
+    { dim: 4, name: 'Battery Life (h)', max: 30, min: 10 },
+    { dim: 5, name: 'Games Available', max: 50, min: 10 },
+  ],
+  legend: {
+    bottom: 10,
+    data: ['Gamessphere', 'Squareplay', 'Playdium', 'Consoless', 'GameRaider'],
+    itemGap: 10,
+    textStyle: {
+        color: '#fff',
+        fontSize: 14,
+    },
+  },
+  tooltip: {
+    padding: 10,
+    color: '#fff',
+    backgroundColor: '#222',
+    borderColor: '#777',
+    borderWidth: 1
+  },
+  series: [
+    {
+      name: 'Gamessphere',
+      type: 'parallel',
+      lineStyle: {
+        width: 4,
+        opacity: 1,
+      },
+      data: [
+        [300, 2.1, 4.8, 450, 12, 23],
+      ]
+    },
+    {
+      name: 'Squareplay',
+      type: 'parallel',
+      lineStyle: {
+        width: 4,
+        opacity: 1,
+      },
+      data: [
+        [350, 3.8, 7, 380, 18, 30],
+      ]
+    },
+    {
+      name: 'Playdium',
+      type: 'parallel',
+      lineStyle: {
+        width: 4,
+        opacity: 1,
+      },
+      data: [
+        [250, 2.7, 6.5, 500, 25, 18],
+      ]
+    },
+    {
+      name: 'Consoless',
+      type: 'parallel',
+      lineStyle: {
+        width: 4,
+        opacity: 1,
+      },
+      data: [
+        [425, 2.6, 8.5, 480, 25, 12],
+      ]
+    },
+    {
+      name: 'GameRaider',
+      type: 'parallel',
+      lineStyle: {
+        width: 4,
+        opacity: 1,
+      },
+      data: [
+        [339, 4.1, 7.5, 480, 18.5, 46],
+      ]
+    },
+  ]
+};
+
+if (option && typeof option === 'object') {
+    myChart.setOption(option);
+}
+
+        </script>
+    </body>
+</html>
+

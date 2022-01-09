@@ -1,0 +1,188 @@
+<!--
+Copyright (c) 2021 LMU Munich Geometry Processing Authors. All rights reserved.
+Created by Changkun Ou <https://changkun.de>.
+
+Use of this source code is governed by a GNU GPLv3 license that can be found
+in the LICENSE file.
+-->
+
+<!DOCTYPE html>
+<html style="height: 100%">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body style="height: 100%; margin: 0">
+        <div id="container" style="height: 100%"></div>
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
+        <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+
+var option;
+
+
+
+option = {
+  backgroundColor: '#333',
+  animationDurationUpdate: 1500,
+  animationEasingUpdate: 'quinticInOut',
+  series: [
+    {
+      type: 'graph',
+      layout: 'force',
+      symbolSize: 50,
+      label: {
+        show: true
+      },
+      edgeSymbol: ['circle', 'arrow'],
+      edgeSymbolSize: [4, 10],
+      edgeLabel: {
+        fontSize: 20
+      },
+      force: {
+        repulsion: 1000,
+        edgeLength: 200
+      },
+      data: [
+        {
+          name: 'v1',
+          draggable: true
+        },
+        {
+          name: 'v2',
+          draggable: true
+        },
+        {
+          name: 'v3',
+          draggable: true
+        },
+        {
+          name: 'v4',
+          draggable: true
+        },
+        {
+          name: 'v5',
+          draggable: true
+        },
+        {
+          name: 'v6',
+          draggable: true
+        },
+        {
+          name: 'v7',
+          draggable: true
+        }
+      ],
+      links: [
+        {
+          source: 'v1',
+          target: 'v5',
+          lineStyle: { width: 1 }
+        },
+        {
+          source: 'v1',
+          target: 'v6',
+          lineStyle: { width: 1 }
+        },
+        {
+          source: 'v2',
+          target: 'v1',
+          lineStyle: { width: 1 }
+        },
+        {
+          source: 'v2',
+          target: 'v3',
+          lineStyle: { width: 1 }
+        },
+        {
+          source: 'v2',
+          target: 'v4',
+          lineStyle: { width: 1 }
+        },
+        {
+          source: 'v2',
+          target: 'v5',
+          lineStyle: { width: 1 }
+        },
+        {
+          source: 'v3',
+          target: 'v1',
+          lineStyle: { width: 1 }
+        },
+        {
+          source: 'v3',
+          target: 'v6',
+          lineStyle: { width: 1 }
+        },
+        {
+          source: 'v4',
+          target: 'v1',
+          lineStyle: { width: 1 }
+        },
+        {
+          source: 'v4',
+          target: 'v3',
+          lineStyle: { width: 6 }
+        },
+        {
+          source: 'v4',
+          target: 'v5',
+          lineStyle: { width: 3 }
+        },
+        {
+          source: 'v5',
+          target: 'v1',
+          lineStyle: { width: 1 }
+        },
+        {
+          source: 'v6',
+          target: 'v4',
+          lineStyle: { width: 1 }
+        },
+        {
+          source: 'v6',
+          target: 'v7',
+          lineStyle: { width: 1 }
+        },
+        {
+          source: 'v7',
+          target: 'v1',
+          lineStyle: { width: 1 }
+        },
+        {
+          source: 'v7',
+          target: 'v2',
+          lineStyle: { width: 1 }
+        },
+        {
+          source: 'v7',
+          target: 'v3',
+          lineStyle: { width: 1 }
+        },
+        {
+          source: 'v7',
+          target: 'v4',
+          lineStyle: { width: 1 }
+        }
+      ],
+      lineStyle: {
+        opacity: 0.9,
+        width: 2,
+        curveness: 0
+      }
+    }
+  ]
+};
+
+
+
+if (option && typeof option === 'object') {
+    myChart.setOption(option);
+}
+
+        </script>
+    </body>
+</html>
+

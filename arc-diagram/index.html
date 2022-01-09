@@ -1,0 +1,194 @@
+<!--
+Copyright (c) 2021 LMU Munich Geometry Processing Authors. All rights reserved.
+Created by Changkun Ou <https://changkun.de>.
+
+Use of this source code is governed by a GNU GPLv3 license that can be found
+in the LICENSE file.
+-->
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<script src="https://d3js.org/d3.v6.js"></script>
+<div id="my_dataviz"></div>
+<script>
+const data = {
+  "nodes": [
+    {
+      "id": 0,
+      "name": "0"
+    },
+    {
+      "id": 1,
+      "name": "1"
+    },
+    {
+      "id": 2,
+      "name": "2"
+    },
+    {
+      "id": 3,
+      "name": "3"
+    },
+    {
+      "id": 4,
+      "name": "4"
+    },
+    {
+      "id": 5,
+      "name": "5"
+    },
+    {
+      "id": 6,
+      "name": "6"
+    },
+    {
+      "id": 7,
+      "name": "7"
+    },
+    {
+      "id": 8,
+      "name": "8"
+    },
+    {
+      "id": 9,
+      "name": "9"
+    },
+    {
+      "id": 10,
+      "name": "10"
+    },
+    {
+      "id": 11,
+      "name": "11"
+    },
+    {
+      "id": 12,
+      "name": "12"
+    },
+  ],
+  "links": [
+
+    {
+      "source": 0,
+      "target": 1
+    },
+    {
+      "source": 1,
+      "target": 2
+    },
+    {
+      "source": 1,
+      "target": 4
+    },
+
+    {
+      "source": 0,
+      "target": 3
+    },
+            {
+      "source": 3,
+      "target": 5
+    },
+    {
+      "source": 3,
+      "target": 11
+    },
+     {
+      "source": 5,
+      "target": 6
+    }
+    ,
+    {
+      "source": 5,
+      "target": 7
+    },
+    {
+      "source": 5,
+      "target": 9
+    },
+    {
+      "source": 6,
+      "target": 12
+    },
+    {
+      "source": 0,
+      "target": 8
+    },
+    {
+      "source": 8,
+      "target": 10
+    }
+  ]
+}
+
+const margin = {top: 20, right: 30, bottom: 20, left: 30},
+  width = 1280,
+  height =720;
+
+const svg = d3.select("#my_dataviz")
+.append("svg")
+.attr("width", width + margin.left + margin.right)
+.attr("height", height + margin.top + margin.bottom)
+.append("g")
+.attr("transform",`translate(${margin.left},${margin.top})`);
+
+const allNodes = data.nodes.map(d=>d.name)
+const x = d3.scalePoint()
+.range([0, width])
+.domain(allNodes)
+
+const idToNode = {};
+data.nodes.forEach(function (n) {
+    idToNode[n.id] = n;
+});
+
+const links = svg
+.selectAll('mylinks')
+.data(data.links)
+.join('path')
+.attr('d', d=> {
+    start = x(idToNode[d.source].name)
+    end = x(idToNode[d.target].name)
+    return ['M', start, height-30, 'A', (start - end)/2, ',', (start - end)/2, 0, 0, ',', start < end ? 1 : 0, end, ',', height-30] .join(' ');
+})
+.style("fill", "none")
+.attr("stroke", "#69c0ff")
+.attr("stroke-width", "3")
+
+const nodes = svg
+.selectAll("mynodes")
+.data(data.nodes)
+.join("circle")
+.attr("cx", d => x(d.name))
+.attr("cy", height-30)
+.attr("r", 30)
+.style("fill", "#1890ff")
+
+const labels = svg
+.selectAll("mylabels")
+.data(data.nodes)
+.join("text")
+.attr("x", d=>x(d.name))
+.attr("y", height+20)
+.text(d=>(d.name))
+.style("text-anchor", "middle")
+.attr("font-family", "sans-serif")
+.attr("font-size", 14)
+.attr("text-anchor", "end")
+
+nodes
+.on('mouseover', function(event,d){
+    nodes.style('fill', "#B8B8B8")
+    d3.select(this).style('fill', '#1890ff')
+    links
+        .style('stroke', a=>  a.source === d.id || a.target === d.id ? '#1890ff' : '#b8b8b8')
+        .style('stroke-width', a=>a.source === d.id || a.target === d.id ? 4 : 1)
+})
+.on('mouseout', function(event,d){
+    nodes.style('fill', "#1890ff")
+    links
+        .style('stroke', '#69c0ff')
+        .style('stroke-width', '3')
+})
+
+</script>
