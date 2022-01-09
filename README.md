@@ -1,8 +1,16 @@
 # infovis
 
-📈 Information Visualization at LMU Munich
+📈 Information Visualization @ LMU Munich Winter Semester 2021/22
 
-This repository contains the sample source code of discussed visualizations in the exercises.
+- Homepage: [http://mimuc.de/iv](http://mimuc.de/iv)
+- Instructor: [Prof. Dr. Butz](https://www.medien.ifi.lmu.de/team/andreas.butz/)
+- Assistants: [Carl Oechsner](https://www.medien.ifi.lmu.de/team/carl.oechsner/), [Changkun Ou](https://www.medien.ifi.lmu.de/team/changkun.ou/)
+- Tutors: Christina Winiker, Anahita Marashi, Clara Sayffaerth
+- Date: Tuesdays, 10am [c.t.](https://en.wikipedia.org/wiki/Academic_quarter_(class_timing)) - 12pm
+- Location: Schellingstr. 3, room S004
+- Registration at [Uni2Work](https://uni2work.ifi.lmu.de/course/W21/IfI/InfoVis)
+
+This repository contains the discussed resources in tutorial sessions.
 
 | Visualization Technique | Code |
 |:--:|:--:|
